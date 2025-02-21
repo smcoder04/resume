@@ -1,0 +1,52 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { motion } from "framer-motion";
+
+const projects = [
+  { name: "Resume Classifier", description: "A machine learning project to classify resumes based on job roles.", link: "https://github.com/shubhi/resume-classifier" },
+  { name: "IoT Railway Track Monitor", description: "Smart monitoring system for railway tracks using IoT sensors.", link: "https://github.com/shubhi/iot-railway-monitor" },
+];
+
+export default function Portfolio() {
+  return (
+    <div className="min-h-screen bg-gray-900 text-white p-6">
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-center"
+      >
+        <h1 className="text-4xl font-bold">Shubhi Mishra</h1>
+        <p className="text-lg text-gray-400">MCA Student | Developer | Tech Enthusiast</p>
+      </motion.div>
+
+      <section className="mt-8 text-center">
+        <h2 className="text-2xl font-semibold">Projects</h2>
+        <div className="grid grid-cols-1 md-grid-cols-2 gap-4 mt-4">
+          {projects.map((project, index) => (
+            <Card key={index} className="bg-gray-800 p-4">
+              <CardContent>
+                <h3 className="text-xl font-bold">{project.name}</h3>
+                <p className="text-gray-400">{project.description}</p>
+                <Button className="mt-2 bg-blue-500" asChild>
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">View Project</a>
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-8 text-center">
+        <h2 className="text-2xl font-semibold">Contact</h2>
+        <div className="flex justify-center gap-4 mt-4">
+          <a href="https://github.com/shubhi" className="text-blue-400 text-2xl" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+          <a href="https://linkedin.com/in/shubhi" className="text-blue-400 text-2xl" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+          <a href="mailto:shubhi@example.com" className="text-blue-400 text-2xl"><FaEnvelope /></a>
+        </div>
+      </section>
+    </div>
+  );
+}
